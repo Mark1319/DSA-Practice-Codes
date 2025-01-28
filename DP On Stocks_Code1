@@ -1,0 +1,29 @@
+Best Time To Buy and Sell Stocks
+class Solution {
+    public static int maxProfit(int[] prices) {
+        PriorityQueue<Integer>pq=new PriorityQueue<>(Collections.reverseOrder());
+        int n=prices.length;
+        int maxi=0;
+        int minimum=Integer.MAX_VALUE;
+        int[] arr=new int[n];
+        for(int i=0;i<n;i++){
+            minimum=Math.min(minimum,prices[i]);
+            arr[i]=minimum;
+        }
+        int value=0;
+        for(int i=1;i<n;i++){
+            int ans=prices[i]-arr[i-1];
+            value=Math.max(value,ans);
+
+        }
+        // for(int i=n-1;i>=0;i--){
+        //     if(!pq.isEmpty() && pq.peek()>prices[i]){
+        //         maxi=Math.max(maxi,pq.peek()-prices[i]);
+        //     }
+        //     pq.offer(prices[i]);
+        // }
+        // return maxi;
+        return value;
+
+    }
+}
